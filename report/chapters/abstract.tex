@@ -1,0 +1,28 @@
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+Secure Shell (SSH) is a widely used cryptographic protocol for secure remote
+administration and data transfer. Its popularity has made it a frequent target
+of brute-force attacks, where adversaries attempt repeated login attempts with
+different password combinations until access is gained. Such attacks pose
+significant risks to organisations, particularly those with limited resources
+to deploy advanced intrusion-detection systems.
+
+This project extends a Capstone 1 rule-based detector (static and adaptive
+threshold rules applied to Linux authentication logs) with a machine-learning
+layer and a hybrid decision fusion engine. The objective is to evaluate
+whether a rule + ML hybrid outperforms the pure adaptive-rule baseline on the
+same dataset while keeping false positives low and remaining interpretable.
+
+% Methods: real-time log parser + 14 statistical features + 3 classifiers (RF,
+% XGBoost, IsolationForest) + a weighted hybrid decision layer.
+
+% Results table is auto-populated by ``scripts/run_pipeline.py`` into
+% ``report/figures/baseline_comparison.csv``; drop the table here in Ch.5.
+
+The findings confirm that rule-based detection remains relevant, but its
+hybridisation with machine learning further strengthens the practical
+defence posture of small organisations and academic institutions.
+
+Keywords: SSH, brute-force detection, authentication logs, anomaly
+detection, machine learning.

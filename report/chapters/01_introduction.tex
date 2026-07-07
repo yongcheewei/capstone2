@@ -1,0 +1,35 @@
+\chapter{Introduction}
+
+\section{Background}
+SSH is the de-facto standard for remote shell access on Linux. Adversaries
+brute-force the password authentication by automating tens of thousands of
+``Accepted password`` / ``Failed password`` attempts until a valid
+credential is guessed. Distributed brute-force campaigns make the threat
+hard to mitigate with naïve static rules.
+
+\section{Problem statement}
+Pure static rules (e.g. ``> N failed attempts in T seconds``) produce both
+false negatives when attackers throttle their attacks and false positives
+when a legitimate user mistypes a password. Adaptive thresholding mitigates
+some of these errors but it does not exploit richer contextual signals
+(unique usernames, port diversity, time-of-day). This project investigates
+whether fusing rules with machine-learning classifiers gives a meaningful
+improvement.
+
+\section{Objectives}
+\begin{enumerate}
+  \item Re-implement the Capstone 1 rule engine (static, adaptive, hybrid rules) from its published abstract.
+  \item Engineer per-IP features and train supervised (Random Forest, XGBoost) and unsupervised (Isolation Forest) models.
+  \item Build a hybrid decision layer combining rule scores and ML probabilities.
+  \item Evaluate accuracy, F1, false-positive rate and latency versus the rule-only baselines.
+  \item Package a reproducible pipeline and demo dashboard.
+\end{enumerate}
+
+\section{Scope}
+The project targets Linux ``auth.log``/``secure`` files. Cross-platform
+analysis (Windows Event Log, etc.) is left as future work per the abstract.
+
+\section{Report outline}
+Chapter 2 reviews related work. Chapter 3 details the proposed hybrid
+architecture. Chapter 4 documents the implementation. Chapter 5 reports
+results. Chapter 6 discusses findings and limitations. Chapter 7 concludes.

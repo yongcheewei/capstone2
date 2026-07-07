@@ -1,0 +1,54 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    breaklines=true,
+    frame=single,
+}
+
+\title{Hybrid Detection of SSH Brute-Force Attacks by Combining\\Adaptive Rule-Based Thresholding with Machine Learning\\Classification on Linux Authentication Logs}
+\author{Yong Chee Wei\\\small 22022917\\\small \href{mailto:22022917@example.edu}{22022917@example.edu}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\pagenumbering{roman}
+\input{chapters/abstract}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\pagenumbering{arabic}
+
+\input{chapters/01_introduction}
+\input{chapters/02_literature_review}
+\input{chapters/03_methodology}
+\input{chapters/04_implementation}
+\input{chapters/05_results}
+\input{chapters/06_discussion}
+\input{chapters/07_conclusion}
+
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+\end{document}

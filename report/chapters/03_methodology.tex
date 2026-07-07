@@ -1,0 +1,41 @@
+\chapter{Methodology}
+
+\section{System overview}
+The system has four layers: (1) log parser/normaliser, (2) feature
+extractor, (3) rule engine, (4) ML model + hybrid decision fusion. Events
+flow through the parser, then the rule engine and the ML model operate in
+parallel before being fused into a final per-IP decision.
+
+\section{Rule engine}
+Re-implemented from the Capstone 1 abstract.
+\begin{itemize}
+  \item \textbf{Static rule:} $>\,N$ failed attempts from a single IP within
+        a rolling $W$-second window.
+  \item \textbf{Adaptive rule:} per-IP failure-rate baseline computed over the
+        first $B$ days; alert whenever a one-minute bucket exceeds
+        $\mu + k\sigma$.
+  \item \textbf{Contextual rules:} invalid-user flood, user-spray
+        (many unique users with few attempts each), low port diversity
+        (script-driven attacks).
+\end{itemize}
+
+\section{Feature engineering}
+For each IP the pipeline produces 14 features (counts, ratios, ratios of
+failures to successes, Shannon entropy of usernames, port diversity,
+burstiness, time-of-day, internal/external). The exact column list lives in
+\texttt{src/features/build\_features.py}.
+
+\section{Machine-learning models}
+Random Forest, XGBoost (supervised) and Isolation Forest (unsupervised).
+Class imbalance is mitigated using SMOTE from \texttt{imbalanced-learn}.
+
+\section{Hybrid decision fusion}
+Per-IP rule confidence and ML probability are combined as
+$\alpha \cdot s_r + (1-\alpha) \cdot s_m$ where $\alpha \in [0, 1]$.
+Either signal reaching its own block threshold immediately raises the
+final decision to ``attack'' (fast path).
+
+\section{Evaluation}
+We compare static-only, adaptive-only, hybrid-rule-only, ML-only, and
+hybrid (rule + ML) over the same dataset, reporting precision, recall,
+F1, ROC-AUC, and per-event latency.
