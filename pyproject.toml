@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ssh-bruteforce-hybrid"
-version = "0.1.0"
+version = "1.0.0-beta.1"
 description = "Hybrid rule-based + ML detection of SSH brute-force attacks on Linux auth logs."
 readme = "README.md"
 requires-python = ">=3.10"
