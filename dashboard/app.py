@@ -41,6 +41,15 @@ with st.sidebar:
 sample_path = ROOT / "data" / "processed" / "sample_auth.log"
 uploaded = st.file_uploader("Upload auth.log", type=["log", "txt"])
 
+if not sample_path.exists():
+    with st.spinner("Bundled sample log missing — generating one on the fly..."):
+        try:
+            from scripts.generate_sample_log import generate
+            sample_path.parent.mkdir(parents=True, exist_ok=True)
+            generate(sample_path)
+        except Exception as exc:  # noqa: BLE001
+            st.error(f"Could not auto-generate sample log: {exc}")
+
 log_text: str | None = None
 if uploaded is not None:
     log_text = uploaded.read().decode("utf-8", errors="replace")
@@ -49,7 +58,7 @@ elif sample_path.exists():
     st.info(f"Loaded sample log ({sample_path.name}, "
             f"{len(log_text.splitlines())} lines)")
 else:
-    st.warning("No log available. Provide one or generate the sample first.")
+    st.warning("No log available. Upload one above.")
 
 if log_text:
     with st.spinner("Parsing log..."):
@@ -74,7 +83,8 @@ if log_text:
         ml_df.columns = ["ip", "ml_score"]
         model_summary = bundle.metrics
     except FileNotFoundError:
-        st.warning("No trained model artefact found. Showing rule-only.")
+        st.warning("No trained model artefact found. "
+                   "Showing rule-only (run scripts/run_pipeline.py to train).")
 
     fusion = FusionConfig(alpha=rule_alpha,
                           rule_block_threshold=rule_block,

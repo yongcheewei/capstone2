@@ -29,6 +29,25 @@ capstone2/
 ```
 
 ## Quick start
+
+### One-shot demo (recommended for first-time users)
+
+The release zip ships with a sample `auth.log` and a pre-trained model
+artefact, so a single command gets the demo running:
+
+```bash
+# Windows
+scripts\install_and_run.cmd
+
+# macOS / Linux
+bash scripts/install_and_run.sh
+```
+
+The script creates `.venv`, installs dependencies, then launches the
+Streamlit dashboard at <http://localhost:8501>.
+
+### Manual setup
+
 ```bash
 python -m venv .venv
 .venv\Scripts\activate          # Windows

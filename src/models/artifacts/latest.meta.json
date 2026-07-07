@@ -1,0 +1,30 @@
+{
+  "name": "random_forest",
+  "metrics": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "n": 2,
+    "n_positive": 1,
+    "roc_auc": 1.0
+  },
+  "feature_columns": [
+    "failed_total",
+    "accepted_total",
+    "failure_to_success_ratio",
+    "failures_per_minute",
+    "unique_users_targeted",
+    "invalid_user_attempts",
+    "invalid_user_ratio",
+    "unique_ports",
+    "active_minutes",
+    "attempts_per_minute",
+    "username_entropy",
+    "is_internal_ip",
+    "first_attempt_hour",
+    "rapid_attempts_burst"
+  ],
+  "created_at": "2026-07-07T02:27:35.265789",
+  "notes": "class_weight=balanced",
+  "artifact_path": "F:\\Downloads\\capstone2-main\\capstone2-main\\src\\models\\artifacts\\random_forest_20260707T022735.joblib"
+}
