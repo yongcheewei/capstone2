@@ -1,5 +1,5 @@
 # measures CPU time, memory usage and throughput on a given log file
-# this is the "Performance Testing" mentioned in cp1 section 3.4
+# this is the "Performance Testing" mentioned in Capstone 2 section 3.4
 # and the "Measure system resource usage" from section 3.6
 import time
 import sys

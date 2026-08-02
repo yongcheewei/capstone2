@@ -1,3 +1,3 @@
-# SSH Brute-Force Detector - Python dependencies
-# matplotlib is the only external dep, used for the 5 result charts
+# Detection of SSH brute-force attacks using log-pattern rules - Python dependencies
+# matplotlib is the only external dep, used for the 6 result charts
 matplotlib>=3.5

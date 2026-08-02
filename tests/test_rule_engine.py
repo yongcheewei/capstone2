@@ -1,4 +1,4 @@
-# unit tests for the rule engine - covers each of the 4 rules
+# unit tests for the rule engine - covers each of the 5 rules
 import unittest
 import sys
 import os

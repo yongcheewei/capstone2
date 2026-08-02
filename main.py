@@ -71,7 +71,7 @@ def run(log_path, output_dir="results", ground_truth=None, config=None, with_fig
             _json.dump(metrics, f, indent=2)
         print(f"[+] Saved metrics to {os.path.join(output_dir, 'metrics.json')}")
 
-    # step 8 (optional): draw all 5 figures
+    # step 8 (optional): draw all 6 figures
     if with_figures:
         try:
             from modules.visualizer import generate_all
@@ -84,7 +84,7 @@ def run(log_path, output_dir="results", ground_truth=None, config=None, with_fig
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Rule-based SSH brute-force attack detector"
+        description="Detection of SSH brute-force attacks using log-pattern rules"
     )
     parser.add_argument(
         "--log",

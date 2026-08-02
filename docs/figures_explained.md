@@ -1,8 +1,8 @@
 # Figures Explained
 
-This document explains each of the 5 charts that the project generates,
-how to read them, and which Research Question (RQ) from the cp1 report
-each one addresses. All charts are produced by `modules/visualizer.py`
+This document explains each of the 6 charts that the project generates,
+how to read them, and which Research Question (RQ) from the Capstone 2
+report each one addresses. All charts are produced by `modules/visualizer.py`
 and saved to `results/figures/`.
 
 ---
@@ -53,7 +53,7 @@ and saved to `results/figures/`.
 - A rule that never fires may have its threshold set too high
 - Ideally all four rules contribute - that means broader defensive coverage
 
-**Maps to RQ:** RQ1 - the multi-rule hybrid approach the cp1 report recommends.
+**Maps to RQ:** RQ1 - the multi-rule hybrid approach the Capstone 2 report recommends.
 
 ---
 
@@ -86,7 +86,7 @@ and saved to `results/figures/`.
 - Multiple IPs from the same subnet failing in a coordinated way is a **botnet** (caught by distributed_attack rule)
 - Subnets with 2-3 IPs are the most common botnet pattern
 
-**Maps to RQ:** RQ1 + addresses the distributed-attack research gap from cp1 Section 2.4 (where Fail2Ban/SSHGuard struggle).
+**Maps to RQ:** RQ1 + addresses the distributed-attack research gap from Capstone 2 Section 2.4 (where Fail2Ban/SSHGuard struggle).
 
 ---
 
@@ -101,13 +101,13 @@ and saved to `results/figures/`.
 - **Static threshold** uses a fixed "5 failed logins" rule for every IP. Easy to implement but flag innocent users who mistype a lot.
 - **Adaptive threshold** tunes the limit per IP based on observed baseline behaviour. Tolerant of normal noise, strict on anomalies.
 
-**From the cp1 report:**
+**From the Capstone 2 report:**
 > "Adaptive thresholding, tailored to baseline login behaviour, improved detection performance by approximately 30% compared to static rules."
 
 **Demo result on the sample log:**
 - Static: 4 alerts (includes 1 false positive - a legitimate user who mistyped 6 times in a row)
 - Adaptive: 3 alerts (skipped the false positive)
-- Direct empirical support for the cp1 claim
+- Direct empirical support for the Capstone 2 claim
 
 **Maps to RQ:** **Direct answer to RQ2** - the static-vs-adaptive comparison.
 
@@ -121,8 +121,4 @@ python main.py --figures
 
 # Method 2: one-click script
 python scripts/generate_report.py
-
-# Method 3: GUI
-python run_gui.py
-# then click "Run Detection" -> "Generate Figures"
 ```

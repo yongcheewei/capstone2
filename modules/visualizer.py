@@ -1,11 +1,11 @@
-# this module draws 5 charts that explain the detection results
-# each chart has a short title + a one-line takeaway that gets used by the GUI
+# this module draws 6 charts that explain the detection results
+# each chart has a short title + a one-line takeaway
 import os
 from collections import Counter, defaultdict
 from datetime import datetime
 
 import matplotlib
-# this lets the GUI work without a display, important on headless boxes
+# headless backend so the script runs on servers without a display
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
@@ -15,7 +15,7 @@ plt.rcParams["font.sans-serif"] = ["SimHei", "Microsoft YaHei", "Arial Unicode M
 plt.rcParams["axes.unicode_minus"] = False
 
 
-# short explanations for each chart - shown in the GUI and the markdown
+# short explanations for each chart - shown in the markdown
 CHART_DESCRIPTIONS = {
     "failed_per_ip": (
         "Chart 1: Failed attempts per IP",
@@ -50,7 +50,7 @@ CHART_DESCRIPTIONS = {
         "Direct answer to RQ2. Compares how many alerts each thresholding "
         "strategy raised on the same log. Adaptive usually wins because it "
         "tunes the threshold to each IP's own baseline - this is the empirical "
-        "evidence for the 30% false-positive reduction claimed in the cp1 report.",
+        "evidence for the 30% false-positive reduction claimed in the Capstone 2 report.",
     ),
     "distributed_attack": (
         "Chart 6: Distributed attack subnet analysis",

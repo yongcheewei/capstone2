@@ -73,7 +73,7 @@ def main():
     print(f"      {n} figure(s) saved to {fig_dir}/")
 
     print("\n[done] All results in 'results/' folder.")
-    print("       Open results/figures/ to see the 5 charts.")
+    print("       Open results/figures/ to see the 6 charts.")
 
 
 if __name__ == "__main__":
